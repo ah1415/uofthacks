@@ -162,7 +162,11 @@ class App extends Component {
             </table>
           </div>
         </div>
+        <div>
+        <Link to="/" class="btn btn-primary">Next</Link>
         </div>
+        </div>
+
     );
   }
 }

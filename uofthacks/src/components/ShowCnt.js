@@ -41,7 +41,7 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4><Link to="/">Contact Information</Link></h4>
+          <h4>Contact Information</h4>
             <h3 class="panel-title">
               {this.state.contact.name}
             </h3>
@@ -58,6 +58,7 @@ class Show extends Component {
               <dd>{this.state.contact.linkedin}</dd>
             </dl>
             <Link to={`/editcnt/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+            <span> </span><Link to="/" class="btn btn-primary">Return</Link>
 
           </div>
         </div>
