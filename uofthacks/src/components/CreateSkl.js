@@ -47,7 +47,7 @@ class Create extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/" class="btn btn-primary">Skill List</Link></h4>
+            <h4><Link to="/about" class="btn btn-primary">Skill List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="name">Name:</label>

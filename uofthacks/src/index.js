@@ -13,10 +13,12 @@ import CreateSkl from './components/CreateSkl';
 import ShowSkl from './components/ShowSkl';
 import ShowCnt from './components/ShowCnt';
 import EditCnt from './components/EditCnt';
+import App2 from './App2';
 ReactDOM.render(
   <Router>
       <div>
         <Route exact path='/' component={App} />
+        <Route path='/about' component={App2} />
         <Route path='/editexp/:id' component={EditExp} />
         <Route path='/editskl/:id' component={EditSkl} />
         <Route path='/createexp' component={CreateExp} />

@@ -58,7 +58,7 @@ class Show extends Component {
               <dd>{this.state.contact.linkedin}</dd>
             </dl>
             <Link to={`/editcnt/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
-            <span> </span><Link to="/" class="btn btn-primary">Return</Link>
+            <span> </span><Link to="/about" class="btn btn-primary">Return</Link>
 
           </div>
         </div>

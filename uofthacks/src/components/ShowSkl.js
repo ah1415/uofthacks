@@ -49,7 +49,7 @@ class Show extends Component {
           <div class="panel-body">
             <Link to={`/editskl/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
-            <span> </span><Link to="/" class="btn btn-primary">Return</Link>
+            <span> </span><Link to="/about" class="btn btn-primary">Return</Link>
           </div>
         </div>
       </div>
