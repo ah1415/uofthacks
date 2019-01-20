@@ -1,27 +1,55 @@
+
+
+
 import React, { Component } from 'react';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 
 class Show extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      job: {},
+      key: ''
+    };
+  }
+
+  componentDidMount() {
+    const ref2 = firebase.firestore().collection('jobs').doc(this.props.match.params.id);
+    ref2.get().then((doc) => {
+      if (doc.exists) {
+        this.setState({
+          job: doc.data(),
+          key: "ySVm3mtwFR4nRKtGPRJ3",
+          isLoading: false
+        });
+      } else {
+        console.log("No such document!");
+      }
+    });
+  }
+
+
 
   render() {
     return (
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          <h4>Job Description</h4>
+
+          <h4>JOB DESCRIPTION</h4>
             <h3 class="panel-title">
-              Job Description:
+              Job Description
             </h3>
-          </div>
-          <div class="panel-body">
-            <textArea class="form-control" name="description" onChange={this.onChange} placeholder="Description" cols="80" rows="3"></textArea>
-            <Link to={`/about/`} class="btn btn-success">Submit</Link>&nbsp;
+            <dl>
+              <dt>Description:</dt>
+              <dd>{this.state.job.des}</dd>
+              </dl>
+              <Link to="/resume" class="btn btn-primary">Next</Link>
+            <span> </span><Link to={`/editjobdes/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+
             <span> </span><Link to="/about" class="btn btn-primary">Return</Link>
           </div>
-        </div>
-      </div>
+
     );
   }
 }

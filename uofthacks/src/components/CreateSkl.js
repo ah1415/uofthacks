@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +28,7 @@ class Create extends Component {
       this.setState({
         name: ''
       });
-      this.props.history.push("/")
+      this.props.history.push("/about")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -53,7 +52,7 @@ class Create extends Component {
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name" value={name} onChange={this.onChange} placeholder="Name" />
               </div>
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success" href="/about">Submit</button>
             </form>
           </div>
         </div>

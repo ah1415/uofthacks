@@ -15,6 +15,8 @@ import ShowCnt from './components/ShowCnt';
 import EditCnt from './components/EditCnt';
 import App2 from './App2';
 import JobDes from './components/JobDes';
+import Resume from './components/Resume';
+import EditJobDes from './components/EditJobDes';
 
 ReactDOM.render(
   <Router>
@@ -29,7 +31,9 @@ ReactDOM.render(
         <Route path='/showskl/:id' component={ShowSkl} />
         <Route path='/showcnt/:id' component={ShowCnt} />
         <Route path='/editcnt/:id' component={EditCnt} />
-        <Route path='/jobdes/' component={JobDes} />
+        <Route path='/jobdes/:id' component={JobDes} />
+        <Route path='/resume' component={Resume} />
+        <Route path='/editjobdes/:id' component={EditJobDes} />
 
       </div>
   </Router>,

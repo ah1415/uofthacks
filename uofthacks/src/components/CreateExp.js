@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import firebase from '../Firebase';
 import { Link } from 'react-router-dom';
 
@@ -35,7 +34,7 @@ class Create extends Component {
         description: '',
         date: ''
       });
-      this.props.history.push("/")
+      this.props.history.push("/about")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -67,7 +66,7 @@ class Create extends Component {
                 <label for="date">Date:</label>
                 <input type="text" class="form-control" name="date" value={date} onChange={this.onChange} placeholder="Date" />
               </div>
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success" href="/about">Submit</button>
             </form>
           </div>
         </div>

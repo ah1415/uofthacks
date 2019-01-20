@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase';
-import { Link } from 'react-router-dom';
+
 
 class Edit extends Component {
 
@@ -8,18 +8,18 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
-      name: ''
+      des: ''
     };
   }
 
   componentDidMount() {
-    const ref2 = firebase.firestore().collection('skills').doc(this.props.match.params.id);
+    const ref2 = firebase.firestore().collection('jobs').doc(this.props.match.params.id);
     ref2.get().then((doc) => {
       if (doc.exists) {
-        const skill = doc.data();
+        const job = doc.data();
         this.setState({
-          key: doc.id,
-          name: skill.name,
+          key: "ySVm3mtwFR4nRKtGPRJ3",
+          des: job.des,
         });
       } else {
         console.log("No such document!");
@@ -30,23 +30,23 @@ class Edit extends Component {
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
-    this.setState({skill:state});
+    this.setState({job:state});
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name } = this.state;
+    const { des } = this.state;
 
-    const updateRef = firebase.firestore().collection('skills').doc(this.state.key);
+    const updateRef = firebase.firestore().collection('jobs').doc(this.state.key);
     updateRef.set({
-      name
+      des
     }).then((docRef) => {
       this.setState({
         key: '',
-        name: ''
+        des: ''
       });
-      this.props.history.push("/showskl/"+this.props.match.params.id)
+      this.props.history.push("/JobDes/"+this.props.match.params.id)
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -59,15 +59,15 @@ class Edit extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              EDIT SKILL
+              EDIT JOB DESCRIPTION
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/showskl/${this.state.key}`} class="btn btn-primary">Skill List</Link></h4>
+
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" name="name" value={this.state.name} onChange={this.onChange} placeholder="Name" />
+                <label for="name">Job Description:</label>
+                <textArea class="form-control" name="des" value = {this.state.des} onChange={this.onChange} placeholder="Job Description" cols="80" rows="3">{this.state.des}</textArea>
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

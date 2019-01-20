@@ -9,13 +9,16 @@ class App extends Component {
     this.ref = firebase.firestore().collection('experiences');
     this.ref2 = firebase.firestore().collection('skills');
     this.ref3 = firebase.firestore().collection('contacts');
+    this.ref4 = firebase.firestore().collection('jobs');
     this.unsubscribe = null;
     this.unsubscribe2 = null;
     this.unsubscribe3 = null;
+    this.unsubscribe4 = null;
     this.state = {
       experiences: [],
       skills: [],
       contacts: [],
+      jobs: []
     };
   }
 
@@ -63,11 +66,25 @@ class App extends Component {
       contacts
    });
   }
-
+  onCollectionUpdate4 = (querySnapshot) => {
+    const jobs = [];
+    querySnapshot.forEach((doc) => {
+      const { des } = doc.data();
+      jobs.push({
+        key: "ySVm3mtwFR4nRKtGPRJ3",
+        doc, // DocumentSnapshot
+        des,
+      });
+    });
+    this.setState({
+      jobs
+   });
+}
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
     this.unsubscribe2 = this.ref2.onSnapshot(this.onCollectionUpdate2);
     this.unsubscribe3 = this.ref3.onSnapshot(this.onCollectionUpdate3);
+    this.unsubscribe4 = this.ref4.onSnapshot(this.onCollectionUpdate4);
   }
 
   render() {
@@ -164,12 +181,14 @@ class App extends Component {
           </div>
         </div>
         <div>
-        <Link to="/jobdes" class="btn btn-primary">Next</Link>
-        </div>
+        {this.state.jobs.map(job =>
+        <Link to={`/jobdes/${job.key}`} class="btn btn-primary">Next</Link>)}
+        <Link to="/" class="btn btn-primary">Logout</Link></div>
         </div>
 
     );
   }
 }
+
 
 export default App;
