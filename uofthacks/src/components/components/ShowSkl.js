@@ -7,17 +7,17 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contact: {},
+      skill: {},
       key: ''
     };
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('contacts').doc(this.props.match.params.id);
-    ref.get().then((doc) => {
+    const ref2 = firebase.firestore().collection('skills').doc(this.props.match.params.id);
+    ref2.get().then((doc) => {
       if (doc.exists) {
         this.setState({
-          contact: doc.data(),
+          skill: doc.data(),
           key: doc.id,
           isLoading: false
         });
@@ -28,9 +28,9 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('contacts').doc(id).delete().then(() => {
+    firebase.firestore().collection('skills').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
-      this.props.history.push("/about")
+      this.props.history.push("/")
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });
@@ -41,25 +41,14 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4>Contact Information</h4>
+          <h4><Link to="/">Skill List</Link></h4>
             <h3 class="panel-title">
-              {this.state.contact.name}
+              {this.state.skill.name}
             </h3>
           </div>
           <div class="panel-body">
-            <dl>
-              <dt>Phone:</dt>
-              <dd>{this.state.contact.phone}</dd>
-              <dt>Email:</dt>
-              <dd>{this.state.contact.email}</dd>
-              <dt>GitHub:</dt>
-              <dd>{this.state.contact.github}</dd>
-              <dt>LinkedIn:</dt>
-              <dd>{this.state.contact.linkedin}</dd>
-            </dl>
-            <Link to={`/editcnt/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
-            <span> </span><Link to="/about" class="btn btn-primary">Return</Link>
-
+            <Link to={`/editskl/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>

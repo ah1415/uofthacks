@@ -75,7 +75,6 @@ class App extends Component {
 
 
       <div class="container">
-
       <h1>ABOUT</h1>
 
       <div class="panel panel-default">
@@ -163,11 +162,7 @@ class App extends Component {
             </table>
           </div>
         </div>
-        <div>
-        <Link to="/jobdes" class="btn btn-primary">Next</Link>
         </div>
-        </div>
-
     );
   }
 }

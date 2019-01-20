@@ -7,17 +7,17 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contact: {},
+      experience: {},
       key: ''
     };
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('contacts').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('experiences').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
-          contact: doc.data(),
+          experience: doc.data(),
           key: doc.id,
           isLoading: false
         });
@@ -28,9 +28,9 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('contacts').doc(id).delete().then(() => {
+    firebase.firestore().collection('experiences').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
-      this.props.history.push("/about")
+      this.props.history.push("/")
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });
@@ -41,25 +41,20 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4>Contact Information</h4>
+          <h4><Link to="/">Experience List</Link></h4>
             <h3 class="panel-title">
-              {this.state.contact.name}
+              {this.state.experience.title}
             </h3>
           </div>
           <div class="panel-body">
             <dl>
-              <dt>Phone:</dt>
-              <dd>{this.state.contact.phone}</dd>
-              <dt>Email:</dt>
-              <dd>{this.state.contact.email}</dd>
-              <dt>GitHub:</dt>
-              <dd>{this.state.contact.github}</dd>
-              <dt>LinkedIn:</dt>
-              <dd>{this.state.contact.linkedin}</dd>
+              <dt>Description:</dt>
+              <dd>{this.state.experience.description}</dd>
+              <dt>Date:</dt>
+              <dd>{this.state.experience.date}</dd>
             </dl>
-            <Link to={`/editcnt/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
-            <span> </span><Link to="/about" class="btn btn-primary">Return</Link>
-
+            <Link to={`/editskl/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
