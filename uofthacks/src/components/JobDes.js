@@ -36,10 +36,10 @@ class Show extends Component {
     return (
       <div class="container">
 
-          <h4>JOB DESCRIPTION</h4>
-            <h3 class="panel-title">
-              Job Description
-            </h3>
+          <h3>Job Description</h3>
+            <h4 class="panel-title">
+              
+            </h4>
             <dl>
               <dt>Description:</dt>
               <dd>{this.state.job.des}</dd>

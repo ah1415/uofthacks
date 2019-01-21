@@ -93,7 +93,7 @@ class App extends Component {
 
       <div class="container">
 
-      <h1>ABOUT</h1>
+      <h1>PROFILE</h1>
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -183,7 +183,7 @@ class App extends Component {
         <div>
         {this.state.jobs.map(job =>
         <Link to={`/jobdes/${job.key}`} class="btn btn-primary">Next</Link>)}
-        <Link to="/" class="btn btn-primary">Logout</Link></div>
+        <span> </span><Link to="/" class="btn btn-primary">Logout</Link></div>
         </div>
 
     );

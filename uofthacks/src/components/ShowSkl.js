@@ -41,10 +41,10 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4>Skill List</h4>
-            <h3 class="panel-title">
+          <h3>Skill List</h3>
+            <h4 class="panel-title">
               {this.state.skill.name}
-            </h3>
+            </h4>
           </div>
           <div class="panel-body">
             <Link to={`/editskl/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;

@@ -41,10 +41,10 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4>Experience List</h4>
-            <h3 class="panel-title">
+          <h3>Experience List</h3>
+            <h4 class="panel-title">
               {this.state.experience.title}
-            </h3>
+            </h4>
           </div>
           <div class="panel-body">
             <dl>
